@@ -1,0 +1,6 @@
+<table id="zones">
+	<thead><th>Name</th><th>Type</th><th>Masters</th></thead>
+	{{#each zones}}
+	<tbody class="zoneListing"><tr class="zoneContainer"><td>{{name}}</td><td>{{kind}}</td><td><ul>{{#each masters}}<li>{{this}}</li>{{/each}}</ul></td></td></tbody>
+	{{/each}}
+</table>

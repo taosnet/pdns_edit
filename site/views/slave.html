@@ -1,0 +1,13 @@
+<tr class="recordsListing"><td colspan=3">
+<button>Retrieve</button>
+<table>
+	<thead>
+		<tr><th>Head</th><th>TTL</th><th>Type</th><th>Content</th></tr>
+	</thead>
+	<tbody>
+		{{#each rrsets}}
+		<tr><td>{{this.name}}</td><td>{{this.ttl}}</td><td>{{this.type}}</td><td><ul>{{#each this.records}}<li>{{this.content}}</li>{{/each}}</ul></td></tr>
+		{{/each}}
+	</tbody>
+</table>
+</td></tr>

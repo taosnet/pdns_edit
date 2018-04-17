@@ -1,0 +1,43 @@
+body {
+	background-color: var(--white);
+	color: var(--black);
+}
+#newZone {
+	width: 100%;
+	border: 1px solid black;
+	margin: 0.25em;
+	padding: 0.5em;
+}
+label {
+	font-weight: bold;
+}
+.error {
+	font-weight: bold;
+	background-color: var(--hlred);
+}
+.valid {
+	font-weight: normal;
+	background-color: var(--hlgreen);
+}
+
+#zones > tbody:nth-child(2n) {
+	background-color: var(--brwhite);
+}
+#zonesHeader {
+	font-weight: bold;
+}
+.recordsListing table {
+	margin: 1em;
+	padding: 0.25em;
+	border: 1px solid var(--black);
+}
+.changed {
+	background-color: var(--hlyellow);
+}
+.recordsListing .addEntry {
+	background-color: var(--brblue);
+	border: 1px solid var(--blue);
+}
+.recordsListing table tbody tr:nth-child(2n) {
+	background-color: var(--brwhite);
+}

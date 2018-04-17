@@ -1,0 +1,13 @@
+<tr class="recordsListing"><td colspan="3">
+<table>
+	<thead>
+		<tr><th>Name</th><th>TTL</th><th>Type</th><th>Content</th><th></th></tr>
+	</thead>
+	<tbody>
+		<tr class="addRecord"><td>test.{{name}}</td><td>3600</td><td><select name="type" id="addRecordType"><option selected>A</option><option>CNAME</option><option>MX</option><option>TXT</option></select></td><td><ul class="content"><li>CHANGE ME!</li></ul></td><td><button class="add">+</button><button class="edit">Add Record</button></td></tr>
+		{{#each rrsets}}
+		<tr class="record"><td>{{this.name}}</td><td>{{this.ttl}}</td><td>{{this.type}}</td><td><ul class="content">{{#each this.records}}<li>{{this.content}}</li>{{/each}}</ul></td><td>{{buttons this}}</td></tr>
+		{{/each}}
+	</tbody>
+</table>
+</td></tr>
