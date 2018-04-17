@@ -159,7 +159,8 @@ const displayRecords = {
 				A: '192.168.0.1',
 				CNAME: zone.name,
 				MX: '10 mail.'+zone.name,
-				TXT: 'Some arbitrary text'
+				TXT: 'Some arbitrary text',
+				CAA: '0 issue "letsencrypt.org"'
 			};
 			var name = row.children().first().attr('contenteditable', true).data('default', 'test.'+zone.name).data('name', 'name');
 			var ttl = name.next().attr('contenteditable', true).data('default', '3600').data('name', 'ttl');
