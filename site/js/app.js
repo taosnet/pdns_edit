@@ -159,6 +159,7 @@ const displayRecords = {
 				A: '192.168.0.1',
 				CNAME: zone.name,
 				MX: '10 mail.'+zone.name,
+				NS: 'ns1.newmex.com.',
 				TXT: 'Some arbitrary text',
 				CAA: '0 issue "letsencrypt.org"'
 			};
@@ -219,12 +220,12 @@ const displayRecords = {
 			type.on('change', function() {
 				row.find('.content li').text(typeDefaults[type.val()]);
 				record.records.forEach(function(e) { e.content = typeDefaults[type.val()]; e.original = typeDefaults[type.val()]; });
-				record.type = type.val();
+				record.changeType(type.val());
 			});
 			row.find('.edit').on('click', function() {
 				var entries = record.records.filter(function(e) { return e.content != 'DELETE'; });
 				if(entries.length === 0) {
-					alert('Cannot add an empty entrie!');
+					alert('Cannot add an empty entry!');
 					return;
 				}
 				record.records = entries;

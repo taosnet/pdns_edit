@@ -117,6 +117,10 @@ var PDNS = (function() {
 			record.delete = deleteRecord;
 			record.remove = deleteZone;
 		}
+		record.changeType = function(type) {
+			record.type = type;
+			zoneRecordCallbacks(record);
+		};
 	}
 	function newZoneRecord()
 	{
