@@ -51,7 +51,7 @@ var PDNS = (function() {
                         return false;
                 },
                 TXT: function(txt) {
-                        return false;
+                        return !(/(\x00|\u0000|\n|\r)/.test(txt));
                 }
         };
 	const messages = {
@@ -61,12 +61,18 @@ var PDNS = (function() {
 		CNAME: '"CNAME" record must be a valid domain!',
 		NS: '"NS" record must be a valid domain!',
 		MX: '"MX" record format is "priority domain"!',
-		TXT: '"TXT" record must start and end with "!'
+		TXT: '"TXT" record does not currently support NULL, \n, and \r characters!'
 	};
 	const sanitize = {
 		'*': function(txt) { return txt; },
 		name: function(txt) { return txt; },
-		ttl: function(txt) { return txt; }
+		ttl: function(txt) { return txt; },
+		TXT: function(txt) {
+			if(txt.substr(0, 1) === '"' && txt.substr(-1, 1) === '"') {
+				return txt;
+			}
+			return JSON.stringify(txt);
+		}
 	};
 	function editRecord(callback) {
 		var data = {
