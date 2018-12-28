@@ -48,6 +48,13 @@ var PDNS = (function() {
                         return txt.isDomain();
                 },
                 MX: function(txt) {
+			var expression = /^\d+ (.+)\.$/;
+			var match = expression.exec(txt);
+			if(match && match[1]) {
+				if(match[1].isDomain()) {
+					return true;
+				}
+			}
                         return false;
                 },
                 TXT: function(txt) {
